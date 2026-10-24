@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ASTRAL RAW — Portafolio</title>
+  
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fuentes oficiales Syne e Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Capa de bienvenida con Sparkle Button -->
+  <div id="welcome-overlay">
+    <div class="welcome-content">
+      <p class="subtitle">ASTRAL RAW</p>
+      <h2>TOCA PARA COMENZAR</h2>
+      
+      <button class="btn-enter" id="enter-btn">
+        <span>ENTRAR</span>
+        <div class="sparkles">
+          <svg class="sparkle sparkle-1" viewBox="0 0 160 160" fill="none">
+            <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
+          </svg>
+          <svg class="sparkle sparkle-2" viewBox="0 0 160 160" fill="none">
+            <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
+          </svg>
+          <svg class="sparkle sparkle-3" viewBox="0 0 160 160" fill="none">
+            <path d="M80 0C80 44.1828 44.1828 80 0 80C44.1828 80 80 115.817 80 160C80 115.817 115.817 80 160 80C115.817 80 80 44.1828 80 0Z" fill="currentColor"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Barra de navegación superior (Estilo Imagen 1) -->
+  <header class="top-nav">
+    <div class="nav-brand">ASTRAL RAW</div>
+    <nav class="nav-links">
+      <a href="#parallax" class="active">Inicio</a>
+      <a href="#portfolio">Portafolio</a>
+      <a href="#services">Servicios</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Contenedor principal Parallax (Inicio) -->
+  <div class="parallax-container" id="parallax">
+    
+    <div class="layer layer-bg" data-depth="0.04">
+      <div class="photo-columns">
+        <div class="column">
+          <div class="grid-item"><img src="assets/gallery/gallery-1.webp" alt="Trabajo 1"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-2.webp" alt="Trabajo 2"></div>
+        </div>
+        <div class="column col-offset">
+          <div class="grid-item"><img src="assets/gallery/gallery-3.webp" alt="Trabajo 3"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-4.webp" alt="Trabajo 4"></div>
+        </div>
+        <div class="column">
+          <div class="grid-item"><img src="assets/gallery/gallery-5.webp" alt="Trabajo 5"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-1.webp" alt="Trabajo 6"></div>
+        </div>
+        <div class="column col-offset">
+          <div class="grid-item"><img src="assets/gallery/gallery-2.webp" alt="Trabajo 7"></div>
+          <div class="grid-item"><img src="assets/gallery/gallery-3.webp" alt="Trabajo 8"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="layer layer-fg" data-depth="0.12">
+      <div class="hero-title">
+        <p class="subtitle">PH GABO</p>
+        <h1>ASTRAL RAW</h1>
+        <a href="#portfolio" class="btn-explore">VER TRABAJOS</a>
+      </div>
+    </div>
+
+    <div class="hero-description">
+      Audiovisual dedicado a varias áreas con especialización en cosplay.
+    </div>
+
+  </div>
+
+  <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+            <li data-filter="*" class="filter-active">All Work</li>
+            <li data-filter=".filter-cosplay">Cosplay</li>
+            <li data-filter=".filter-estudio">Estudio</li>
+            <li data-filter=".filter-otros">Otros</li>
+          </ul>
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+
+            <!-- Elemento 1 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cosplay filter-estudio">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/gallery/gallery-1.webp" alt="Cosplay Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">cosplay</span>
+                      <h4>Cosplay</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">cosplay</span>
+                  </div>
+                  <div class="project-year">2026</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cosplay filter-estudio">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/gallery/gallery-2.webp" alt="Cosplay Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">cosplay</span>
+                      <h4>Cosplay</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">cosplay</span>
+                  </div>
+                  <div class="project-year">2026</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Elemento 3 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cosplay filter-estudio">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/gallery/gallery-3.webp" alt="Cosplay Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">cosplay</span>
+                      <h4>Cosplay</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">cosplay</span>
+                  </div>
+                  <div class="project-year">2026</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Elemento 4 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cosplay filter-otros">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/gallery/gallery-4.webp" alt="Cosplay Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">cosplay</span>
+                      <h4>Cosplay</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">cosplay</span>
+                  </div>
+                  <div class="project-year">2026</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Elemento 5 -->
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-cosplay filter-otros">
+              <div class="portfolio-card">
+                <div class="portfolio-image-container">
+                  <img src="assets/gallery/gallery-5.webp" alt="Cosplay Project" class="img-fluid" loading="lazy">
+                  <div class="portfolio-overlay">
+                    <div class="portfolio-info">
+                      <span class="project-category">cosplay</span>
+                      <h4>Cosplay</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="portfolio-meta">
+                  <div class="project-tags">
+                    <span class="tag">cosplay</span>
+                  </div>
+                  <div class="project-year">2026</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+  <section id="services" class="section">
+    <div class="container text-center">
+      <h2>Servicios</h2>
+      <p style="color: #888;">Especialidades en Audiovisual, Fotografía Cosplay y Edición.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+  <div class="contact-container">
+    
+    <!-- Columna Izquierda: Textos e Información -->
+    <div class="contact-info">
+      <h2 class="contact-title">Vamos a sacar<br>unas fotos.</h2>
+      <p class="contact-subtitle">Tambien disponible para colaboraciones y projectos. consultas por los siguientes datos de contacto</p>
+      
+      <ul class="contact-details">
+        <li>
+          <span class="icon">✉</span>
+          <a href="mailto:astralrawph@gmail.com">astralrawph@gmail.com</a>
+        </li>
+        <li>
+          <span class="icon">📷</span>
+          <a href="https://instagram.com/ph_gabo" target="_blank">@ph_gabo</a>
+        </li>
+         <li>
+          <span class="icon">📷</span>
+          <a href="https://instagram.com/astral.raw" target="_blank">@astral.raw</a>
+        </li>
+        <li>
+          <span class="icon">📞</span>
+          <span>+56 9 8403-7139</span>
+        </li>
+      </ul>
+
+      <div class="contact-location">
+        <span class="location-label">BASED IN</span>
+        <p>Santiago, Chile</p>
+      </div>
+    </div>
+
+    <!-- Columna Derecha: Imagen Estilo Polaroid / Editorial -->
+    <div class="contact-image-wrapper">
+      <img src="assets/gallery/gallery.webp" alt="Trabajo y Cámara" class="contact-img">
+    </div>
+
+  </div>
+</section>
+
+  <script src="main.js"></script>
+</body>
+</html>
