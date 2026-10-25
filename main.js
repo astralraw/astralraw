@@ -2,14 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const layers = document.querySelectorAll('.layer');
   const overlay = document.getElementById('welcome-overlay');
 
+  const bgLayer = document.querySelector('.layer-bg');
+
   function moveLayers(deltaX, deltaY) {
-    layers.forEach((layer) => {
-      const depth = parseFloat(layer.getAttribute('data-depth')) || 0.1;
-      // Reducimos el multiplicador de 450 a 80 para un movimiento mucho más sutil
+    if (bgLayer) {
+      const depth = parseFloat(bgLayer.getAttribute('data-depth')) || 0.04;
+      // Movimiento suave solo para el fondo
       const translateX = -deltaX * (depth * 80);
       const translateY = -deltaY * (depth * 80);
-      layer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
-    });
+      bgLayer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+    }
   }
 
   // 1. Movimiento con mouse (PC)
