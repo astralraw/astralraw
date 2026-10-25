@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bgLayer) {
       const depth = parseFloat(bgLayer.getAttribute('data-depth')) || 0.04;
       // Movimiento suave solo para el fondo
-      const translateX = -deltaX * (depth * 200);
-      const translateY = -deltaY * (depth * 200);
+      const translateX = -deltaX * (depth * 300);
+      const translateY = -deltaY * (depth * 300);
       bgLayer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
     }
   }
