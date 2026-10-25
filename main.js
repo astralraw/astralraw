@@ -5,8 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function moveLayers(deltaX, deltaY) {
     layers.forEach((layer) => {
       const depth = parseFloat(layer.getAttribute('data-depth')) || 0.1;
-      const translateX = -deltaX * (depth * 450);
-      const translateY = -deltaY * (depth * 450);
+      // Reducimos el multiplicador de 450 a 80 para un movimiento mucho más sutil
+      const translateX = -deltaX * (depth * 80);
+      const translateY = -deltaY * (depth * 80);
       layer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
     });
   }
@@ -71,6 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('scroll', activeMenuOnScroll);
+
+  // --- 5. MENÚ DESPLEGABLE MÓVIL ---
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinksContainer = document.getElementById('nav-links');
+
+  if (menuToggle && navLinksContainer) {
+    menuToggle.addEventListener('click', () => {
+      navLinksContainer.classList.toggle('active');
+    });
+
+    // Cerrar el menú al hacer clic en cualquier opción
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinksContainer.classList.remove('active');
+      });
+    });
+
+    // Cerrar al hacer clic fuera del menú
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navLinksContainer.contains(e.target)) {
+        navLinksContainer.classList.remove('active');
+      }
+    });
+  }
 });
 
 // --- LIGHTBOX DINÁMICO PARA EL PORTAFOLIO ---
@@ -89,13 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = modal.querySelector('.lightbox-close');
 
   function openLightbox(imageSrc) {
-    // Cambiar la ruta de miniatura a la imagen original si es necesario
     let fullSrc = imageSrc.replace('-min', '');
     modalImg.src = fullSrc;
     modal.classList.add('active');
   }
 
-  // 1. Escuchar clics en las imágenes del portafolio
   const portfolioImages = document.querySelectorAll('.portfolio-image-container img');
   portfolioImages.forEach((img) => {
     img.style.cursor = 'pointer';
@@ -105,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Escuchar clics en los botones de zoom (+) de las tarjetas
   const portfolioLinks = document.querySelectorAll('.portfolio-link');
   portfolioLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
