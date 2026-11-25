@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const layers = document.querySelectorAll('.layer');
   const overlay = document.getElementById('welcome-overlay');
-
   const bgLayer = document.querySelector('.layer-bg');
 
   function moveLayers(deltaX, deltaY) {
     if (bgLayer) {
       const depth = parseFloat(bgLayer.getAttribute('data-depth')) || 0.04;
-      // Movimiento suave solo para el fondo
+      // Multiplicador manual ajustable para el fondo
       const translateX = -deltaX * (depth * 300);
       const translateY = -deltaY * (depth * 300);
       bgLayer.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
@@ -31,12 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     moveLayers(deltaX, deltaY);
   }
 
-  // 3. Ocultar la pantalla de bienvenida y habilitar clics
+  // 3. Ocultar la pantalla de bienvenida y habilitar giroscopio en móvil
   if (overlay) {
     overlay.addEventListener('click', () => {
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
         DeviceOrientationEvent.requestPermission()
-          .then(response => {
+          .then((response) => {
             if (response === 'granted') {
               window.addEventListener('deviceorientation', handleOrientation, true);
             }
@@ -75,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', activeMenuOnScroll);
 
-  // --- 5. MENÚ DESPLEGABLE MÓVIL ---
+  // 5. Menú desplegable móvil
   const menuToggle = document.getElementById('menu-toggle');
   const navLinksContainer = document.getElementById('nav-links');
 
@@ -84,25 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinksContainer.classList.toggle('active');
     });
 
-    // Cerrar el menú al hacer clic en cualquier opción
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         navLinksContainer.classList.remove('active');
       });
     });
 
-    // Cerrar al hacer clic fuera del menú
     document.addEventListener('click', (e) => {
       if (!menuToggle.contains(e.target) && !navLinksContainer.contains(e.target)) {
         navLinksContainer.classList.remove('active');
       }
     });
   }
-});
 
-// --- LIGHTBOX DINÁMICO PARA EL PORTAFOLIO ---
-document.addEventListener('DOMContentLoaded', () => {
-  let modal = document.createElement('div');
+  // 6. Lightbox dinámico para el portafolio
+  const modal = document.createElement('div');
   modal.className = 'lightbox-modal';
   modal.innerHTML = `
     <div class="lightbox-content">
@@ -116,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = modal.querySelector('.lightbox-close');
 
   function openLightbox(imageSrc) {
-    let fullSrc = imageSrc.replace('-min', '');
+    const fullSrc = imageSrc.replace('-min', '');
     modalImg.src = fullSrc;
     modal.classList.add('active');
   }
@@ -134,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
   portfolioLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      let targetSrc = link.getAttribute('href');
+      const targetSrc = link.getAttribute('href');
       openLightbox(targetSrc);
     });
   });
@@ -156,5 +150,53 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       closeModal();
     }
+  });
+
+  // 7. Pestañas de servicios (Fotografía Exterior, Fotografía Estudio, Reels)
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanes = document.querySelectorAll('.service-tab-pane');
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach((b) => b.classList.remove('active'));
+      tabPanes.forEach((p) => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetId = btn.getAttribute('data-target');
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+    });
+  });
+
+  // 8. Filtros del portafolio (All Work / Cosplay / Estudio / Otros)
+  const filterBtns = document.querySelectorAll('.portfolio-filters li');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  function applyFilter(selector) {
+    portfolioItems.forEach((item) => {
+      const show = selector === '*' || item.matches(selector);
+      item.hidden = !show;
+    });
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.setAttribute('role', 'button');
+    btn.setAttribute('tabindex', '0');
+
+    const activate = () => {
+      filterBtns.forEach((b) => b.classList.remove('filter-active'));
+      btn.classList.add('filter-active');
+      applyFilter(btn.getAttribute('data-filter') || '*');
+    };
+
+    btn.addEventListener('click', activate);
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
   });
 });
